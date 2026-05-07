@@ -1,17 +1,26 @@
-/* ═══════════════════════════════════════════════════════
-   PORTFOLIO — SCRIPT.JS
-   All animations, canvas, typing effect, scroll reveal
-═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   EMAILJS — CONFIGURAÇÃO
+   ═══════════════════════════════════════
+   Substitua os valores abaixo pelos seus IDs do EmailJS
+*/
+const EMAILJS_PUBLIC_KEY  = "Ih3bfLDxFeFVYovUB";   // Account > API Keys
+const EMAILJS_SERVICE_ID  = "service_hol28qr";   // Email Services > Service ID
+const EMAILJS_TEMPLATE_ID = "template_t0qjije";  // Email Templates > Template ID
 
-(() => {
-  "use strict";
+/* ═══════════════════════════════════════
+   INICIALIZA EMAILJS
+═══════════════════════════════════════ */
+(function () {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+})();
 
-  /* ─────────────────────────────────────────────
-     1. CUSTOM CURSOR
-  ───────────────────────────────────────────── */
-  const cursor = document.getElementById("cursor");
-  const follower = document.getElementById("cursorFollower");
+/* ═══════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════ */
+const cursor         = document.getElementById("cursor");
+const cursorFollower = document.getElementById("cursorFollower");
 
+if (cursor && cursorFollower) {
   let mouseX = 0, mouseY = 0;
   let followerX = 0, followerY = 0;
 
@@ -19,388 +28,333 @@
     mouseX = e.clientX;
     mouseY = e.clientY;
     cursor.style.left = mouseX + "px";
-    cursor.style.top = mouseY + "px";
+    cursor.style.top  = mouseY + "px";
   });
 
-  const animateFollower = () => {
+  function animateFollower() {
     followerX += (mouseX - followerX) * 0.12;
     followerY += (mouseY - followerY) * 0.12;
-    follower.style.left = followerX + "px";
-    follower.style.top = followerY + "px";
+    cursorFollower.style.left = followerX + "px";
+    cursorFollower.style.top  = followerY + "px";
     requestAnimationFrame(animateFollower);
-  };
+  }
   animateFollower();
+}
 
-  /* ─────────────────────────────────────────────
-     2. NAVBAR SCROLL
-  ───────────────────────────────────────────── */
-  const navbar = document.getElementById("navbar");
+/* ═══════════════════════════════════════
+   NAVBAR SCROLL
+═══════════════════════════════════════ */
+const navbar = document.getElementById("navbar");
+if (navbar) {
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 40);
+  });
+}
 
-  const handleNavScroll = () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  };
-
-  window.addEventListener("scroll", handleNavScroll, { passive: true });
-
-  /* ─────────────────────────────────────────────
-     3. MOBILE MENU
-  ───────────────────────────────────────────── */
-  const burger = document.getElementById("navBurger");
-  const navMobile = document.getElementById("navMobile");
-
-  burger.addEventListener("click", () => {
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+const navBurger = document.getElementById("navBurger");
+const navMobile = document.getElementById("navMobile");
+if (navBurger && navMobile) {
+  navBurger.addEventListener("click", () => {
     navMobile.classList.toggle("open");
   });
-
-  document.querySelectorAll(".nav-mobile-link").forEach((link) => {
+  navMobile.querySelectorAll(".nav-mobile-link").forEach((link) => {
     link.addEventListener("click", () => navMobile.classList.remove("open"));
   });
+}
 
-  /* ─────────────────────────────────────────────
-     4. SMOOTH SCROLL
-  ───────────────────────────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const target = document.querySelector(this.getAttribute("href"));
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
-    });
-  });
-
-  /* ─────────────────────────────────────────────
-     5. HERO CANVAS — PARTICLES + CONNECTIONS
-  ───────────────────────────────────────────── */
-  const canvas = document.getElementById("heroCanvas");
+/* ═══════════════════════════════════════
+   HERO CANVAS — PARTÍCULAS
+═══════════════════════════════════════ */
+const canvas = document.getElementById("heroCanvas");
+if (canvas) {
   const ctx = canvas.getContext("2d");
-
   let W, H, particles = [];
-  const PARTICLE_COUNT = 80;
-  const CONNECTION_DIST = 140;
 
-  const resize = () => {
-    W = canvas.width = window.innerWidth;
+  function resize() {
+    W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
-  };
-
+  }
   resize();
   window.addEventListener("resize", resize);
 
   class Particle {
-    constructor() { this.reset(true); }
-
-    reset(initial = false) {
-      this.x = Math.random() * W;
-      this.y = initial ? Math.random() * H : Math.random() * H;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
-      this.r = Math.random() * 1.5 + 0.5;
-      this.alpha = Math.random() * 0.5 + 0.1;
-      this.hue = Math.random() < 0.6 ? 195 : (Math.random() < 0.5 ? 280 : 170);
+    constructor() { this.reset(); }
+    reset() {
+      this.x     = Math.random() * W;
+      this.y     = Math.random() * H;
+      this.vx    = (Math.random() - 0.5) * 0.3;
+      this.vy    = (Math.random() - 0.5) * 0.3;
+      this.alpha = Math.random() * 0.4 + 0.05;
+      this.r     = Math.random() * 1.5 + 0.5;
     }
-
     update() {
       this.x += this.vx;
       this.y += this.vy;
-      if (this.x < 0 || this.x > W) this.vx *= -1;
-      if (this.y < 0 || this.y > H) this.vy *= -1;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
     }
-
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${this.hue}, 90%, 70%, ${this.alpha})`;
+      ctx.fillStyle = `rgba(0,200,255,${this.alpha})`;
       ctx.fill();
     }
   }
 
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    particles.push(new Particle());
-  }
+  for (let i = 0; i < 120; i++) particles.push(new Particle());
 
-  const drawConnections = () => {
+  function drawLines() {
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CONNECTION_DIST) {
-          const alpha = (1 - dist / CONNECTION_DIST) * 0.12;
-          const hue = (particles[i].hue + particles[j].hue) / 2;
+        if (dist < 100) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `hsla(${hue}, 80%, 65%, ${alpha})`;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = `rgba(0,200,255,${0.06 * (1 - dist / 100)})`;
+          ctx.lineWidth   = 0.5;
           ctx.stroke();
         }
       }
     }
-  };
-
-  const animateCanvas = () => {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach((p) => { p.update(); p.draw(); });
-    drawConnections();
-    requestAnimationFrame(animateCanvas);
-  };
-
-  animateCanvas();
-
-  /* ─────────────────────────────────────────────
-     6. TYPING EFFECT
-  ───────────────────────────────────────────── */
-  const phrases = [
-    "UI/UX Creator",
-    "Frontend Engineer",
-    "Backend Architect",
-    "Problem Solver",
-  ];
-
-  const typingEl = document.getElementById("typingText");
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingTimeout;
-
-  const type = () => {
-    const currentPhrase = phrases[phraseIndex];
-    const displayed = isDeleting
-      ? currentPhrase.substring(0, charIndex - 1)
-      : currentPhrase.substring(0, charIndex + 1);
-
-    typingEl.textContent = displayed;
-
-    if (!isDeleting) {
-      charIndex++;
-      if (charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typingTimeout = setTimeout(type, 1800);
-        return;
-      }
-    } else {
-      charIndex--;
-      if (charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typingTimeout = setTimeout(type, 400);
-        return;
-      }
-    }
-
-    typingTimeout = setTimeout(type, isDeleting ? 45 : 80);
-  };
-
-  setTimeout(type, 800);
-
-  /* ─────────────────────────────────────────────
-     7. SCROLL REVEAL
-  ───────────────────────────────────────────── */
-  const revealEls = document.querySelectorAll(
-    ".reveal-up, .reveal-left, .reveal-right"
-  );
-
-  const revealObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          revealObs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-  );
-
-  revealEls.forEach((el) => revealObs.observe(el));
-
-  /* ─────────────────────────────────────────────
-     8. SKILL BAR ANIMATION
-  ───────────────────────────────────────────── */
-  const skillFills = document.querySelectorAll(".skill-fill");
-
-  const skillObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const pct = entry.target.dataset.pct;
-          entry.target.style.width = pct + "%";
-          skillObs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  skillFills.forEach((el) => skillObs.observe(el));
-
-  /* ─────────────────────────────────────────────
-     9. COUNTER ANIMATION
-  ───────────────────────────────────────────── */
-  const counterEls = document.querySelectorAll(".stat-num");
-
-  const animateCounter = (el) => {
-    const target = parseInt(el.dataset.target);
-    const duration = 1800;
-    const step = target / (duration / 16);
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      el.textContent = Math.round(current);
-    }, 16);
-  };
-
-  const counterObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  counterEls.forEach((el) => counterObs.observe(el));
-
-  /* ─────────────────────────────────────────────
-     10. FORM SUBMIT
-  ───────────────────────────────────────────── */
-  const form = document.getElementById("contactForm");
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const btn = form.querySelector(".btn-submit");
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = `<span>Mensagem enviada!</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>`;
-      btn.style.background = "linear-gradient(135deg, #00ffe0, #00c8ff)";
-      btn.style.color = "#000";
-      setTimeout(() => {
-        btn.innerHTML = originalHTML;
-        btn.style.background = "";
-        btn.style.color = "";
-        form.reset();
-      }, 3000);
-    });
   }
 
-  /* ─────────────────────────────────────────────
-     11. PROJECT CARD 3D TILT
-  ───────────────────────────────────────────── */
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.01)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
-  });
-
-  /* ─────────────────────────────────────────────
-     12. GLASS CARD TILT (Timeline)
-  ───────────────────────────────────────────── */
-  document.querySelectorAll(".glass-card").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const pctX = x / rect.width;
-      const pctY = y / rect.height;
-      card.style.background = `radial-gradient(circle at ${pctX * 100}% ${pctY * 100}%, rgba(0,200,255,0.04), rgba(255,255,255,0.01) 60%)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.background = "";
-    });
-  });
-
-  /* ─────────────────────────────────────────────
-     13. ACTIVE NAV LINK ON SCROLL
-  ───────────────────────────────────────────── */
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  const highlightNav = () => {
-    let current = "";
-    sections.forEach((s) => {
-      if (window.scrollY >= s.offsetTop - 120) {
-        current = s.id;
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.style.color = "";
-      if (link.getAttribute("href") === `#${current}`) {
-        link.style.color = "var(--neon-cyan)";
-      }
-    });
-  };
-
-  window.addEventListener("scroll", highlightNav, { passive: true });
-
-  /* ─────────────────────────────────────────────
-     14. INPUT LABEL EFFECT
-  ───────────────────────────────────────────── */
-  document.querySelectorAll(".form-group input, .form-group textarea").forEach((input) => {
-    input.addEventListener("focus", () => {
-      const label = input.previousElementSibling;
-      if (label && label.tagName === "LABEL") {
-        label.style.color = "var(--neon-blue)";
-      }
-    });
-    input.addEventListener("blur", () => {
-      const label = input.previousElementSibling;
-      if (label && label.tagName === "LABEL") {
-        label.style.color = "";
-      }
-    });
-  });
-
-  /* ─────────────────────────────────────────────
-     15. HERO ENTRANCE — stagger
-  ───────────────────────────────────────────── */
-  window.addEventListener("load", () => {
-    const heroItems = document.querySelectorAll(".hero .reveal-up, .hero .reveal-right");
-    heroItems.forEach((el, i) => {
-      setTimeout(() => el.classList.add("revealed"), i * 120 + 100);
-    });
-  });
-function calculateMonths(startDate){
-
-  const start = new Date(startDate)
-  const now = new Date()
-
-  let months =
-    (now.getFullYear() - start.getFullYear()) * 12 +
-    (now.getMonth() - start.getMonth())
-
-  return months <= 0 ? 1 : months
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach((p) => { p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(loop);
+  }
+  loop();
 }
 
-document.querySelectorAll(".skill-exp").forEach((el)=>{
+/* ═══════════════════════════════════════
+   TYPING EFFECT
+═══════════════════════════════════════ */
+const typingEl = document.getElementById("typingText");
+if (typingEl) {
+  const words   = ["Fullstack Developer", "UI/UX Designer", "Problem Solver", "Creative Coder"];
+  let wi = 0, ci = 0, deleting = false;
 
-  const startDate = el.dataset.start
+  function type() {
+    const word    = words[wi];
+    typingEl.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
 
-  const months = calculateMonths(startDate)
+    if (!deleting && ci > word.length)  { deleting = true; setTimeout(type, 1400); return; }
+    if (deleting  && ci < 0)            { deleting = false; wi = (wi + 1) % words.length; }
 
-  el.innerText = `${months} meses`
-})
-})();
+    setTimeout(type, deleting ? 55 : 95);
+  }
+  setTimeout(type, 600);
+}
+
+/* ═══════════════════════════════════════
+   CONTADOR STATS
+═══════════════════════════════════════ */
+function animateCount(el) {
+  const target = +el.dataset.target;
+  let current  = 0;
+  const step   = Math.ceil(target / 40);
+  const timer  = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = current;
+  }, 40);
+}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+const revealEls = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right");
+const observer  = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        const nums = entry.target.querySelectorAll(".stat-num");
+        nums.forEach(animateCount);
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+revealEls.forEach((el) => observer.observe(el));
+
+/* ═══════════════════════════════════════
+   SKILL EXP — tempo decorrido
+═══════════════════════════════════════ */
+document.querySelectorAll(".skill-exp[data-start]").forEach((el) => {
+  const start  = new Date(el.dataset.start);
+  const now    = new Date();
+  const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+
+  if (months < 1) {
+    el.textContent = "< 1 mês";
+  } else if (months < 12) {
+    el.textContent = months === 1 ? "1 mês" : `${months} meses`;
+  } else {
+    const years     = Math.floor(months / 12);
+    const remainder = months % 12;
+    const yearStr   = years === 1 ? "1 ano" : `${years} anos`;
+    const monthStr  = remainder === 0 ? "" : remainder === 1 ? " e 1 mês" : ` e ${remainder} meses`;
+    el.textContent  = yearStr + monthStr;
+  }
+});
+
+/* ═══════════════════════════════════════
+   FORMULÁRIO DE CONTATO — EmailJS
+═══════════════════════════════════════ */
+const form = document.getElementById("contactForm");
+
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nameEl    = document.getElementById("name");
+    const emailEl   = document.getElementById("email");
+    const subjectEl = document.getElementById("subject");
+    const messageEl = document.getElementById("message");
+    const btn       = form.querySelector(".btn-submit");
+
+    // ── Validação básica ──
+    const fields = [nameEl, emailEl, subjectEl, messageEl];
+    let valid = true;
+
+    fields.forEach((field) => {
+      field.style.borderColor = "";
+      if (!field.value.trim()) {
+        field.style.borderColor = "rgba(240,89,240,0.7)";
+        field.style.boxShadow   = "0 0 0 3px rgba(240,89,240,0.12)";
+        valid = false;
+      } else {
+        field.style.boxShadow = "";
+      }
+    });
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailEl.value && !emailRegex.test(emailEl.value)) {
+      emailEl.style.borderColor = "rgba(240,89,240,0.7)";
+      emailEl.style.boxShadow   = "0 0 0 3px rgba(240,89,240,0.12)";
+      valid = false;
+    }
+
+    if (!valid) {
+      showToast("Preencha todos os campos corretamente.", "error");
+      return;
+    }
+
+    // ── Estado de envio ──
+    const originalHTML = btn.innerHTML;
+    btn.disabled       = true;
+    btn.innerHTML      = `<span>Enviando...</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite">
+        <path d="M21 12a9 9 0 1 1-6.22-8.56"/>
+      </svg>`;
+
+    const templateParams = {
+      from_name:  nameEl.value.trim(),
+      from_email: emailEl.value.trim(),
+      subject:    subjectEl.value.trim(),
+      message:    messageEl.value.trim(),
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      showToast("Mensagem enviada! Responderei em até 24h. 🚀", "success");
+      form.reset();
+      fields.forEach((f) => { f.style.borderColor = ""; f.style.boxShadow = ""; });
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      showToast("Erro ao enviar. Tente novamente ou me contate pelo e-mail.", "error");
+    } finally {
+      btn.disabled   = false;
+      btn.innerHTML  = originalHTML;
+    }
+  });
+
+  // Remove erro visual ao digitar
+  form.querySelectorAll("input, textarea").forEach((field) => {
+    field.addEventListener("input", () => {
+      field.style.borderColor = "";
+      field.style.boxShadow   = "";
+    });
+  });
+}
+
+/* ═══════════════════════════════════════
+   TOAST NOTIFICATION
+═══════════════════════════════════════ */
+function showToast(message, type = "success") {
+  // Remove toast anterior se existir
+  document.querySelectorAll(".toast").forEach((t) => t.remove());
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `
+    <span class="toast-icon">${type === "success" ? "✓" : "✕"}</span>
+    <span>${message}</span>
+  `;
+
+  const style = toast.style;
+  style.cssText = `
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    color: #fff;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    max-width: 380px;
+    border: 1px solid;
+    ${type === "success"
+      ? "background: rgba(0,200,100,0.15); border-color: rgba(0,200,100,0.3);"
+      : "background: rgba(240,89,240,0.15); border-color: rgba(240,89,240,0.3);"}
+  `;
+
+  const iconEl = toast.querySelector(".toast-icon");
+  iconEl.style.cssText = `
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+    ${type === "success"
+      ? "background: rgba(0,200,100,0.25); color: #00c864;"
+      : "background: rgba(240,89,240,0.25); color: #f059f0;"}
+  `;
+
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      toast.style.transform = "translateY(0)";
+      toast.style.opacity   = "1";
+    });
+  });
+
+  setTimeout(() => {
+    toast.style.transform = "translateY(20px)";
+    toast.style.opacity   = "0";
+    setTimeout(() => toast.remove(), 400);
+  }, 5000);
+}
+
+/* ── animação do spin no botão ── */
+const spinStyle = document.createElement("style");
+spinStyle.textContent = "@keyframes spin { to { transform: rotate(360deg); } }";
+document.head.appendChild(spinStyle);

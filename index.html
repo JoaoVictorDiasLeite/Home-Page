@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevPortfolio — Fullstack Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+
+  <!-- ───────── NAVBAR ───────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>dev<span class="logo-highlight">.</span><span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link" data-text="Sobre">Sobre</a></li>
+        <li><a href="https://github.com/JoaoVictorDiasLeite" class="nav-link" data-text="Projetos">Projetos</a></li>
+        <li><a href="#contact" class="nav-link" data-text="Contato">Contato</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Contratar</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#about" class="nav-mobile-link">Sobre</a>
+      <a href="#projects" class="nav-mobile-link">Projetos</a>
+      <a href="#experience" class="nav-mobile-link">Experiência</a>
+      <a href="#contact" class="nav-mobile-link">Contato</a>
+    </div>
+  </nav>
+
+  <!-- ───────── HERO ───────── -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        Disponível para projetos
+      </div>
+
+      <h1 class="hero-name reveal-up">
+        <span class="name-line">João Victor</span>
+        <span class="name-line accent-stroke">Dias Leite</span>
+      </h1>
+
+      <div class="hero-typing reveal-up">
+        <span class="typing-prefix">Eu sou </span>
+        <span class="typing-cursor-wrap">
+          <span id="typingText" class="typing-text"></span>
+          <span class="typing-cursor">|</span>
+        </span>
+      </div>
+
+      <p class="hero-desc reveal-up">
+        Construo experiências digitais que unem código limpo, design imersivo e performance de alto nível. Cada linha de código é escrita com intenção.
+      </p>
+
+      <div class="hero-actions reveal-up">
+        <a href="https://github.com/JoaoVictorDiasLeite" class="btn-primary">
+          <span>Ver Projetos</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Falar comigo</a>
+      </div>
+
+      <div class="hero-stats reveal-up">
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">Projetos</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="1">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">Anos Exp.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          
+         
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar holográfico -->
+    <div class="hero-avatar reveal-right">
+      <div class="avatar-glow"></div>
+      <div class="avatar-ring ring-1"></div>
+      <div class="avatar-ring ring-2"></div>
+      <div class="avatar-ring ring-3"></div>
+      <div class="avatar-frame">
+        <div class="avatar-inner">
+          <div class="avatar-initials">JV</div>
+          <div class="avatar-scan"></div>
+        </div>
+      </div>
+      <div class="avatar-tag tag-1">React</div>
+      <div class="avatar-tag tag-2">Node.js</div>
+      <div class="avatar-tag tag-3">Python</div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ───────── SOBRE MIM ───────── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// sobre_mim</span>
+        <h2 class="section-title">Quem está <br/><em>por trás do código</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <p>Desenvolvedor full-stack com <strong>1+ anos</strong> de experiência criando aplicações que escalam. Apaixonado por resolver problemas complexos com soluções elegantes.</p>
+          <p>Trabalhei com startups em estágio inicial, liderando times e entregando produtos que fazem diferença real. Acredito que o melhor código é aquele que ninguém precisa explicar.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Arquitetura de sistemas escaláveis
+            </div>
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              UI/UX com foco em acessibilidade
+            </div>
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              DevOps &amp; CI/CD pipelines
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-grid reveal-right">
+          <div class="skill-card" data-delay="0">
+            <div class="skill-icon" style="--c:#61DAFB">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 11.9c28.9 0 52.1 23.2 52.1 52.1 0 28.9-23.2 52.1-52.1 52.1C35.1 116.1 11.9 92.9 11.9 64c0-28.9 23.2-52.1 52.1-52.1zM64 36c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28-12.5-28-28-28zm0 8c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20z"/></svg>
+            </div>
+            <span class="skill-name">React</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div>
+          </div>
+          <div class="skill-card" data-delay="1">
+            <div class="skill-icon" style="--c:#F7DF1E">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M2 1h125v125H2V1zm66.3 110.4c2.1 3.7 5 6.4 9.1 7.9 4.6 1.8 9.8 1.3 13.8-1.3 3.4-2.3 5.6-5.9 6.3-9.9l-11.2-3.4c-.4 1.8-1.2 3.4-2.7 4.4-1.6 1-3.7 1-5.4.3-1.7-.7-2.7-2.1-3.4-3.7-1.9-4.5-.7-13.1-.7-13.1H74V109c0 1 .1 1.7.3 2.4zM92 52.4H81v33.2c0 7-2.9 8.5-7.4 8.5-5 0-7-3.9-9.2-8l-9.8 6c2.7 5.9 8.2 13 18 13 9 0 19.3-5 19.3-20V52.4zM46 52H23.1v10.5h14.4V82c-3.7 3-8.7 4.3-14.1 3.5-7.7-1.2-13.4-8.6-13.4-17.1 0-9.1 6.4-16.6 15.5-17.3 6.4-.5 11 1.7 14.3 5.4l8-7.7C43.4 44 36.2 40 27.7 40 13.3 40 2 51.3 2 65.7 2 80 13 91.5 27 91.5c8.8 0 15.8-3.1 20.7-8.5L46 78V52z"/></svg>
+            </div>
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="95"></div></div>
+          </div>
+          <div class="skill-card" data-delay="2">
+            <div class="skill-icon" style="--c:#3178C6">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M2 63.91v62.5h125v-125H2v62.5zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73l4.6-2.64 3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H56.66v46.23H45.15V69.26H28.88v-5a49.19 49.19 0 01.12-5.17c.05-.06 10-.09 22.11-.08h22z"/></svg>
+            </div>
+            <span class="skill-name">TypeScript</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div>
+          </div>
+          <div class="skill-card" data-delay="3">
+            <div class="skill-icon" style="--c:#339933">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M112.771 30.334L68.674 4.729c-2.781-1.584-6.402-2.475-9.854-2.475-3.452 0-7.073.891-9.854 2.475L4.87 30.334C1.86 32.083 0 35.262 0 38.768v51.24c0 3.506 1.86 6.685 4.87 8.434l44.097 25.605c2.781 1.584 6.402 2.475 9.854 2.475 3.452 0 7.073-.891 9.854-2.475l44.097-25.605c3.01-1.749 4.869-4.928 4.869-8.434V38.768c0-3.506-1.86-6.685-4.87-8.434zM92.501 66.983a7.998 7.998 0 01-6.667 7.879l-4.5.75c-4.041.674-6.417 2.497-7.208 5.46l-.75 2.796-.375 1.398c-.792 2.963-3.583 4.461-5.167 5.211-3.042 1.459-6.333 1.5-8.583.5-.792-.375-2.042-1.167-3.333-2.292-2.5-2.208-5.083-4.625-5.625-5.166a.832.832 0 01-.25-.625V83.017a.87.87 0 01.417-.75l1.708-.958c.208-.125.458-.042.583.167.625 1 1.958 1.833 3.208 2.333 1.458.542 2.667.583 3.792.125.583-.25.5-.625.458-.917-.083-.583-.667-.833-2.5-1.458-3.458-1.208-6.875-3.375-8.5-7.083a7.998 7.998 0 01.917-7.75l.5-.708c1.375-1.917 3.042-3.583 5.125-4.875l.625-.375.542-.333.875-.5.5-.333c.875-.583 2.083-1.375 3.458-2.208l2.542-1.542c.667-.417.583-1.333-.167-1.667l-2.5-1.042c-1.833-.792-4.083-1.208-6.125-1.208-2.083 0-3.708.375-4.875 1-.667.375-1.458.917-2.458 1.833A.87.87 0 0148 57.268v-1.042a.87.87 0 01.417-.75l1.708-.958c4.958-2.833 11.583-3.583 17.125-2.125l.458.125c2.125.542 4.083 1.5 5.708 2.875 1 .875 1.667 1.75 2.042 2.708.167.458.292.958.25 1.458l-.083.667c-.25 2.458-1.25 4-2.792 5.5l-.625.583c-.917.875-1.292 1.375-.917 2.167.167.333.417.583.792.792l2.958 1.708c2.917 1.708 4.583 4.792 4.458 8z"/></svg>
+            </div>
+            <span class="skill-name">Node.js</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="87"></div></div>
+          </div>
+          <div class="skill-card" data-delay="4">
+            <div class="skill-icon" style="--c:#3776AB">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M49.33 62h29.17C86 62 92 55.6 92 48.05 92 38.34 83.5 32 74.84 32H24.32L2 62h31.33zM127.67 62l-24.66-30H63.99L39.34 62zM64 77H2l22 30h43.23L64 77zm-22 30h86L127.67 77H64z"/></svg>
+            </div>
+            <span class="skill-name">Python</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div>
+          </div>
+          <div class="skill-card" data-delay="5">
+            <div class="skill-icon" style="--c:#E535AB">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 8c30.9 0 56 25.1 56 56s-25.1 56-56 56S8 94.9 8 64 33.1 8 64 8zm0 8c-13.3 0-25.5 4.8-34.8 12.7l80.1 80.1C117.2 99.5 122 87.3 122 74c0-27.6-22.4-50-50-50 0-.1-4.7 0-8 0 0 2.7.1 5.4 0 8zm-50 50c0 27.6 22.4 50 50 50 8 0 15.5-2 22-5.5L35.5 69.7C32 76.2 30 83.8 30 92c-5.3-8.4-8-18.2-8-28z"/></svg>
+            </div>
+            <span class="skill-name">GraphQL</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="78"></div></div>
+          </div>
+          <div class="skill-card" data-delay="6">
+            <div class="skill-icon" style="--c:#FF9900">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M40.7 60.7c0 2 .2 3.6.5 4.7.4 1.1.9 2.3 1.7 3.6.3.5.4.9.4 1.3 0 .6-.3 1.1-1 1.6l-3.4 2.3c-.5.3-.9.4-1.3.4-.5 0-1-.2-1.5-.7-1.1-1.2-2.1-2.5-2.9-3.8-1.3 1.5-2.9 2.8-4.8 3.9-3.5 2-7.5 3-12.1 3-6.3 0-11.3-1.8-15-5.4-3.7-3.6-5.5-8.4-5.5-14.4 0-6.4 2.2-11.5 6.7-15.4 4.5-3.9 10.4-5.8 17.9-5.8 2.5 0 5 .2 7.7.6 2.7.4 5.5 1 8.4 1.7v-5.4c0-5.6-1.2-9.5-3.5-11.7-2.4-2.2-6.4-3.3-12.1-3.3-2.6 0-5.3.3-8 1-2.7.7-5.4 1.5-8 2.6-.6.2-1 .4-1.3.4-.6 0-1-.4-1-1.3V8.7c0-.7.1-1.2.4-1.5.3-.3.8-.6 1.5-.9 2.6-1.3 5.7-2.4 9.3-3.3 3.7-.9 7.5-1.3 11.5-1.3 8.7 0 15.1 2 19.2 5.9 4 4 6 10 6 18.1v23.9h.4zm-16.7 6.3c2.4 0 4.9-.4 7.5-1.3 2.6-.9 4.9-2.5 6.8-4.7 1.1-1.3 2-2.8 2.4-4.4.5-1.6.7-3.5.7-5.9v-2.8c-2.1-.5-4.3-.9-6.6-1.2-2.3-.3-4.5-.4-6.7-.4-4.8 0-8.3 1-10.5 3-2.2 2-3.3 4.8-3.3 8.4 0 3.4.9 6 2.6 7.6 1.7 1.7 4.1 2.7 7.1 2.7zm56.6 7.6c-.8 0-1.3-.1-1.6-.4-.3-.2-.6-.8-1-1.5L65.4 17.9c-.4-.8-.6-1.3-.6-1.6 0-.6.3-1 1-1h6.9c.8 0 1.4.1 1.7.4.3.2.6.8.9 1.5L87 68.3l11.1-51.2c.3-.8.6-1.3.9-1.5.3-.2.9-.4 1.6-.4h5.6c.8 0 1.4.1 1.7.4.3.2.6.8.8 1.5l11.2 51.9 11.5-51.9c.3-.8.6-1.3.9-1.5.3-.2.9-.4 1.7-.4h6.6c.7 0 1 .3 1 1 0 .2 0 .4-.1.6-.1.2-.2.6-.5 1.2l-16.2 55.1c-.3.8-.6 1.3-.9 1.5-.3.2-.9.4-1.6.4h-6.1c-.8 0-1.4-.1-1.7-.4-.3-.3-.6-.8-.8-1.5L104 23.9 92.9 73.2c-.3.8-.6 1.3-.9 1.5-.3.3-.9.4-1.7.4h-9.4z"/></svg>
+            </div>
+            <span class="skill-name">AWS</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div>
+          </div>
+          <div class="skill-card" data-delay="7">
+            <div class="skill-icon" style="--c:#2496ED">
+              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M124.8 52.1c-4.3-2.5-10-2.8-14.8-1.4-.6-5.2-4-9.7-8-12.8l-1.6-1.2-1.3 1.5c-2.6 2.9-3.4 7.8-3.1 11.5.2 2.6 1 5.2 2.6 7.3-1.2.7-2.5 1.6-3.7 2.1-2.4.9-5 1.4-7.5 1.4H2.4l-.3 1.5c-.8 5.3-.7 10.9 1.3 16 2.1 5.3 5.7 9.3 11 11.9 5.7 2.8 12.5 4.2 18.9 4.2 3.4 0 6.8-.3 10.1-1 4.6-1 9-2.8 13-5.4 3.3-2.1 6.3-4.8 8.7-7.9 4.1.1 8-.9 11.4-2.8 3.3-1.8 6-4.5 7.7-7.7h.7c.1 0 .2 0 .3-.1.1 2.2.1 4.5 0 6.7l-.1.8h3.6l.1-.8c.4-4.5.3-9-1.1-13.3 4.8 1.4 9.5.7 13.3-2.4l1.2-1-.9-1.4zM62.5 43.5H53v9.5h9.5v-9.5zm0-12H53v9.5h9.5v-9.5zm12-12h-9.5v9.5h9.5V19.5zm0 12h-9.5v9.5h9.5v-9.5zm0 12h-9.5v9.5h9.5v-9.5zm12-12H77v9.5h9.5V31.5zm0 12H77v9.5h9.5v-9.5zm-36-12H40.5v9.5H50V31.5zm0 12H40.5v9.5H50v-9.5zm-12 0H28.5v9.5H38v-9.5z"/></svg>
+            </div>
+            <span class="skill-name">Docker</span>
+            <div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── PROJETOS ───────── -->
+  
+
+ 
+
+  <!-- ───────── CONTATO ───────── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">// contato</span>
+        <h2 class="section-title">Vamos construir <br/><em>algo juntos?</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <p>Estou sempre aberto a novos projetos, ideias inovadoras e oportunidades de colaboração. Me mande uma mensagem e responderei em até 24h.</p>
+
+          <div class="contact-links">
+            <a href="mailto:jv.diasleite@gmail.com" class="contact-link">
+              <div class="cl-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span>jv.diasleite@gmail.com</span>
+            </a>
+            <a href="https://github.com/JoaoVictorDiasLeite" target="_blank" class="contact-link">
+              <div class="cl-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              </div>
+              <span>https://github.com/JoaoDias</span>
+            </a>
+            <a href="www.linkedin.com/in/joão-victor-dias-leite-0767583b3" target="_blank" class="contact-link">
+              <div class="cl-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <span>linkedin.com/in/JoaoDias</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal-right" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" placeholder="Seu nome completo" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="seu@email.com" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Assunto</label>
+            <input type="text" id="subject" placeholder="Sobre o que você quer falar?" autocomplete="off" />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" rows="5" placeholder="Descreva seu projeto ou ideia..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span>Enviar Mensagem</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>dev<span class="logo-highlight">.</span><span class="logo-bracket">/&gt;</span>
+      </a>
+      <p class="footer-copy">© 2026 João Victor Dias Leite — Desenvolvido com <span class="heart">♥</span> e muito café</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

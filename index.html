@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -108,9 +110,9 @@
           <div class="avatar-scan"></div>
         </div>
       </div>
-      <div class="avatar-tag tag-1">React</div>
+      <div class="avatar-tag tag-1">Css</div>
       <div class="avatar-tag tag-2">Node.js</div>
-      <div class="avatar-tag tag-3">Python</div>
+      <div class="avatar-tag tag-3">Html</div>
     </div>
 
     <div class="hero-scroll-hint">
@@ -149,62 +151,84 @@
           </div>
         </div>
 
-        <div class="skills-grid reveal-right">
-          <div class="skill-card" data-delay="0">
-            <div class="skill-icon" style="--c:#61DAFB">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 11.9c28.9 0 52.1 23.2 52.1 52.1 0 28.9-23.2 52.1-52.1 52.1C35.1 116.1 11.9 92.9 11.9 64c0-28.9 23.2-52.1 52.1-52.1zM64 36c-15.5 0-28 12.5-28 28s12.5 28 28 28 28-12.5 28-28-12.5-28-28-28zm0 8c11 0 20 9 20 20s-9 20-20 20-20-9-20-20 9-20 20-20z"/></svg>
-            </div>
-            <span class="skill-name">React</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div>
-          </div>
-          <div class="skill-card" data-delay="1">
-            <div class="skill-icon" style="--c:#F7DF1E">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M2 1h125v125H2V1zm66.3 110.4c2.1 3.7 5 6.4 9.1 7.9 4.6 1.8 9.8 1.3 13.8-1.3 3.4-2.3 5.6-5.9 6.3-9.9l-11.2-3.4c-.4 1.8-1.2 3.4-2.7 4.4-1.6 1-3.7 1-5.4.3-1.7-.7-2.7-2.1-3.4-3.7-1.9-4.5-.7-13.1-.7-13.1H74V109c0 1 .1 1.7.3 2.4zM92 52.4H81v33.2c0 7-2.9 8.5-7.4 8.5-5 0-7-3.9-9.2-8l-9.8 6c2.7 5.9 8.2 13 18 13 9 0 19.3-5 19.3-20V52.4zM46 52H23.1v10.5h14.4V82c-3.7 3-8.7 4.3-14.1 3.5-7.7-1.2-13.4-8.6-13.4-17.1 0-9.1 6.4-16.6 15.5-17.3 6.4-.5 11 1.7 14.3 5.4l8-7.7C43.4 44 36.2 40 27.7 40 13.3 40 2 51.3 2 65.7 2 80 13 91.5 27 91.5c8.8 0 15.8-3.1 20.7-8.5L46 78V52z"/></svg>
-            </div>
-            <span class="skill-name">JavaScript</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="95"></div></div>
-          </div>
-          <div class="skill-card" data-delay="2">
-            <div class="skill-icon" style="--c:#3178C6">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M2 63.91v62.5h125v-125H2v62.5zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73l4.6-2.64 3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H56.66v46.23H45.15V69.26H28.88v-5a49.19 49.19 0 01.12-5.17c.05-.06 10-.09 22.11-.08h22z"/></svg>
-            </div>
-            <span class="skill-name">TypeScript</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div>
-          </div>
-          <div class="skill-card" data-delay="3">
-            <div class="skill-icon" style="--c:#339933">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M112.771 30.334L68.674 4.729c-2.781-1.584-6.402-2.475-9.854-2.475-3.452 0-7.073.891-9.854 2.475L4.87 30.334C1.86 32.083 0 35.262 0 38.768v51.24c0 3.506 1.86 6.685 4.87 8.434l44.097 25.605c2.781 1.584 6.402 2.475 9.854 2.475 3.452 0 7.073-.891 9.854-2.475l44.097-25.605c3.01-1.749 4.869-4.928 4.869-8.434V38.768c0-3.506-1.86-6.685-4.87-8.434zM92.501 66.983a7.998 7.998 0 01-6.667 7.879l-4.5.75c-4.041.674-6.417 2.497-7.208 5.46l-.75 2.796-.375 1.398c-.792 2.963-3.583 4.461-5.167 5.211-3.042 1.459-6.333 1.5-8.583.5-.792-.375-2.042-1.167-3.333-2.292-2.5-2.208-5.083-4.625-5.625-5.166a.832.832 0 01-.25-.625V83.017a.87.87 0 01.417-.75l1.708-.958c.208-.125.458-.042.583.167.625 1 1.958 1.833 3.208 2.333 1.458.542 2.667.583 3.792.125.583-.25.5-.625.458-.917-.083-.583-.667-.833-2.5-1.458-3.458-1.208-6.875-3.375-8.5-7.083a7.998 7.998 0 01.917-7.75l.5-.708c1.375-1.917 3.042-3.583 5.125-4.875l.625-.375.542-.333.875-.5.5-.333c.875-.583 2.083-1.375 3.458-2.208l2.542-1.542c.667-.417.583-1.333-.167-1.667l-2.5-1.042c-1.833-.792-4.083-1.208-6.125-1.208-2.083 0-3.708.375-4.875 1-.667.375-1.458.917-2.458 1.833A.87.87 0 0148 57.268v-1.042a.87.87 0 01.417-.75l1.708-.958c4.958-2.833 11.583-3.583 17.125-2.125l.458.125c2.125.542 4.083 1.5 5.708 2.875 1 .875 1.667 1.75 2.042 2.708.167.458.292.958.25 1.458l-.083.667c-.25 2.458-1.25 4-2.792 5.5l-.625.583c-.917.875-1.292 1.375-.917 2.167.167.333.417.583.792.792l2.958 1.708c2.917 1.708 4.583 4.792 4.458 8z"/></svg>
-            </div>
-            <span class="skill-name">Node.js</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="87"></div></div>
-          </div>
-          <div class="skill-card" data-delay="4">
-            <div class="skill-icon" style="--c:#3776AB">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M49.33 62h29.17C86 62 92 55.6 92 48.05 92 38.34 83.5 32 74.84 32H24.32L2 62h31.33zM127.67 62l-24.66-30H63.99L39.34 62zM64 77H2l22 30h43.23L64 77zm-22 30h86L127.67 77H64z"/></svg>
-            </div>
-            <span class="skill-name">Python</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div>
-          </div>
-          <div class="skill-card" data-delay="5">
-            <div class="skill-icon" style="--c:#E535AB">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0zm0 8c30.9 0 56 25.1 56 56s-25.1 56-56 56S8 94.9 8 64 33.1 8 64 8zm0 8c-13.3 0-25.5 4.8-34.8 12.7l80.1 80.1C117.2 99.5 122 87.3 122 74c0-27.6-22.4-50-50-50 0-.1-4.7 0-8 0 0 2.7.1 5.4 0 8zm-50 50c0 27.6 22.4 50 50 50 8 0 15.5-2 22-5.5L35.5 69.7C32 76.2 30 83.8 30 92c-5.3-8.4-8-18.2-8-28z"/></svg>
-            </div>
-            <span class="skill-name">GraphQL</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="78"></div></div>
-          </div>
-          <div class="skill-card" data-delay="6">
-            <div class="skill-icon" style="--c:#FF9900">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M40.7 60.7c0 2 .2 3.6.5 4.7.4 1.1.9 2.3 1.7 3.6.3.5.4.9.4 1.3 0 .6-.3 1.1-1 1.6l-3.4 2.3c-.5.3-.9.4-1.3.4-.5 0-1-.2-1.5-.7-1.1-1.2-2.1-2.5-2.9-3.8-1.3 1.5-2.9 2.8-4.8 3.9-3.5 2-7.5 3-12.1 3-6.3 0-11.3-1.8-15-5.4-3.7-3.6-5.5-8.4-5.5-14.4 0-6.4 2.2-11.5 6.7-15.4 4.5-3.9 10.4-5.8 17.9-5.8 2.5 0 5 .2 7.7.6 2.7.4 5.5 1 8.4 1.7v-5.4c0-5.6-1.2-9.5-3.5-11.7-2.4-2.2-6.4-3.3-12.1-3.3-2.6 0-5.3.3-8 1-2.7.7-5.4 1.5-8 2.6-.6.2-1 .4-1.3.4-.6 0-1-.4-1-1.3V8.7c0-.7.1-1.2.4-1.5.3-.3.8-.6 1.5-.9 2.6-1.3 5.7-2.4 9.3-3.3 3.7-.9 7.5-1.3 11.5-1.3 8.7 0 15.1 2 19.2 5.9 4 4 6 10 6 18.1v23.9h.4zm-16.7 6.3c2.4 0 4.9-.4 7.5-1.3 2.6-.9 4.9-2.5 6.8-4.7 1.1-1.3 2-2.8 2.4-4.4.5-1.6.7-3.5.7-5.9v-2.8c-2.1-.5-4.3-.9-6.6-1.2-2.3-.3-4.5-.4-6.7-.4-4.8 0-8.3 1-10.5 3-2.2 2-3.3 4.8-3.3 8.4 0 3.4.9 6 2.6 7.6 1.7 1.7 4.1 2.7 7.1 2.7zm56.6 7.6c-.8 0-1.3-.1-1.6-.4-.3-.2-.6-.8-1-1.5L65.4 17.9c-.4-.8-.6-1.3-.6-1.6 0-.6.3-1 1-1h6.9c.8 0 1.4.1 1.7.4.3.2.6.8.9 1.5L87 68.3l11.1-51.2c.3-.8.6-1.3.9-1.5.3-.2.9-.4 1.6-.4h5.6c.8 0 1.4.1 1.7.4.3.2.6.8.8 1.5l11.2 51.9 11.5-51.9c.3-.8.6-1.3.9-1.5.3-.2.9-.4 1.7-.4h6.6c.7 0 1 .3 1 1 0 .2 0 .4-.1.6-.1.2-.2.6-.5 1.2l-16.2 55.1c-.3.8-.6 1.3-.9 1.5-.3.2-.9.4-1.6.4h-6.1c-.8 0-1.4-.1-1.7-.4-.3-.3-.6-.8-.8-1.5L104 23.9 92.9 73.2c-.3.8-.6 1.3-.9 1.5-.3.3-.9.4-1.7.4h-9.4z"/></svg>
-            </div>
-            <span class="skill-name">AWS</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div>
-          </div>
-          <div class="skill-card" data-delay="7">
-            <div class="skill-icon" style="--c:#2496ED">
-              <svg viewBox="0 0 128 128" fill="currentColor"><path d="M124.8 52.1c-4.3-2.5-10-2.8-14.8-1.4-.6-5.2-4-9.7-8-12.8l-1.6-1.2-1.3 1.5c-2.6 2.9-3.4 7.8-3.1 11.5.2 2.6 1 5.2 2.6 7.3-1.2.7-2.5 1.6-3.7 2.1-2.4.9-5 1.4-7.5 1.4H2.4l-.3 1.5c-.8 5.3-.7 10.9 1.3 16 2.1 5.3 5.7 9.3 11 11.9 5.7 2.8 12.5 4.2 18.9 4.2 3.4 0 6.8-.3 10.1-1 4.6-1 9-2.8 13-5.4 3.3-2.1 6.3-4.8 8.7-7.9 4.1.1 8-.9 11.4-2.8 3.3-1.8 6-4.5 7.7-7.7h.7c.1 0 .2 0 .3-.1.1 2.2.1 4.5 0 6.7l-.1.8h3.6l.1-.8c.4-4.5.3-9-1.1-13.3 4.8 1.4 9.5.7 13.3-2.4l1.2-1-.9-1.4zM62.5 43.5H53v9.5h9.5v-9.5zm0-12H53v9.5h9.5v-9.5zm12-12h-9.5v9.5h9.5V19.5zm0 12h-9.5v9.5h9.5v-9.5zm0 12h-9.5v9.5h9.5v-9.5zm12-12H77v9.5h9.5V31.5zm0 12H77v9.5h9.5v-9.5zm-36-12H40.5v9.5H50V31.5zm0 12H40.5v9.5H50v-9.5zm-12 0H28.5v9.5H38v-9.5z"/></svg>
-            </div>
-            <span class="skill-name">Docker</span>
-            <div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div>
+       <div class="skills-grid reveal-right">
+
+  <div class="skill-card" data-delay="0">
+    <div class="skill-top">
+      <div class="skill-left">
+  <i class="fa-brands fa-html5 skill-icon"></i>
+  <span class="skill-name">HTML</span>
+</div>
+
+      <span class="skill-exp" data-start="2026-02-01"></span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-fill html"></div>
+    </div>
+  </div>
+
+  <div class="skill-card" data-delay="1">
+    <div class="skill-top">
+     <div class="skill-left">
+  <i class="fa-brands fa-css3-alt skill-icon"></i>
+  <span class="skill-name">CSS</span>
+</div>
+
+      <span class="skill-exp" data-start="2026-02-01"></span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-fill css"></div>
+    </div>
+  </div>
+
+  <div class="skill-card" data-delay="2">
+    <div class="skill-top">
+      <div class="skill-left">
+  <i class="fa-brands fa-java skill-icon"></i>
+  <span class="skill-name">Java</span>
+</div>
+
+      <span class="skill-exp" data-start="2026-02-01"></span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-fill java"></div>
+    </div>
+  </div>
+
+  <div class="skill-card" data-delay="3">
+    <div class="skill-top">
+      <div class="skill-left">
+  <i class="fa-solid fa-pen-nib skill-icon"></i>
+  <span class="skill-name">Design</span>
+</div>
+
+      <span class="skill-exp" data-start="2026-02-01"></span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-fill design"></div>
+    </div>
+  </div>
+
+  <div class="skill-card" data-delay="4">
+    <div class="skill-top">
+      <div class="skill-left">
+  <i class="fa-solid fa-video skill-icon"></i>
+  <span class="skill-name">Videomaker</span>
+</div>
+
+      <span class="skill-exp" data-start="2026-02-01"></span>
+    </div>
+
+    <div class="skill-bar">
+      <div class="skill-fill video"></div>
+    </div>
+  </div>
+
+</div>
           </div>
         </div>
       </div>

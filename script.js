@@ -383,5 +383,24 @@
       setTimeout(() => el.classList.add("revealed"), i * 120 + 100);
     });
   });
+function calculateMonths(startDate){
 
+  const start = new Date(startDate)
+  const now = new Date()
+
+  let months =
+    (now.getFullYear() - start.getFullYear()) * 12 +
+    (now.getMonth() - start.getMonth())
+
+  return months <= 0 ? 1 : months
+}
+
+document.querySelectorAll(".skill-exp").forEach((el)=>{
+
+  const startDate = el.dataset.start
+
+  const months = calculateMonths(startDate)
+
+  el.innerText = `${months} meses`
+})
 })();
